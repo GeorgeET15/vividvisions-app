@@ -13,6 +13,7 @@ const ImageUpload = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedRoomType, setSelectedRoomType] = useState("");
   const [selectedRoomStyle, setSelectedRoomStyle] = useState("");
+  const [userPrompt, setUserPrompt] = useState("");
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -40,6 +41,10 @@ const ImageUpload = () => {
 
   const handleRoomStyleChange = (event) => {
     setSelectedRoomStyle(event.target.value);
+  };
+
+  const handlePromptChange = (event) => {
+    setUserPrompt(event.target.value);
   };
 
   const handleImageUpload = async (event) => {
@@ -90,10 +95,12 @@ const ImageUpload = () => {
         downloadURL,
         roomType: selectedRoomType,
         roomStyle: selectedRoomStyle,
+        userPrompt: userPrompt,
       });
 
       console.log("Document written with ID: ", docRef.id);
-      setPrompt(selectedRoomType + " " + selectedRoomStyle);
+
+      setPrompt(selectedRoomStyle + " " + selectedRoomType + ", " + userPrompt);
 
       setImageURL(downloadURL);
 
@@ -242,8 +249,18 @@ const ImageUpload = () => {
                   style={{ maxWidth: "100%", marginTop: "10px" }}
                 />
               )}
+
+              {/* Prompt input section */}
+              <input
+                type="text"
+                placeholder="Enter a prompt"
+                value={userPrompt}
+                onChange={handlePromptChange}
+                className="prompt-input" // Apply CSS class for styling
+              />
+
+              {/* Room type dropdown */}
               <div className="dropdown-container">
-                {/* Room type dropdown */}
                 <select
                   value={selectedRoomType}
                   onChange={handleRoomTypeChange}
@@ -258,8 +275,8 @@ const ImageUpload = () => {
                 </select>
               </div>
 
+              {/* Room style dropdown */}
               <div className="dropdown-container">
-                {/* Room style dropdown */}
                 <select
                   value={selectedRoomStyle}
                   onChange={handleRoomStyleChange}
@@ -274,6 +291,7 @@ const ImageUpload = () => {
                 </select>
               </div>
             </div>
+
             <div className="modal-actions">
               <button onClick={handleUpload}>
                 {loading ? (

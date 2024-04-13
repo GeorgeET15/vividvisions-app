@@ -491,6 +491,16 @@ hr {
   max-height: 50vh;
 }
 
+.prompt-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
 /* AI Output */
 
 .output-header {
