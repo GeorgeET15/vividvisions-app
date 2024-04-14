@@ -9,7 +9,7 @@ import AIOutput from "./AIOutput";
 
 Modal.setAppElement("#root");
 
-const ImageUpload = () => {
+const ImageUpload = ({ model }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedRoomType, setSelectedRoomType] = useState("");
   const [selectedRoomStyle, setSelectedRoomStyle] = useState("");
@@ -305,7 +305,7 @@ const ImageUpload = () => {
           </div>
         </div>
       )}
-      <AIOutput imgUrl={imageURL} prompt={prompt} />
+      <AIOutput imgUrl={imageURL} prompt={prompt} model={model} />
     </>
   );
 };

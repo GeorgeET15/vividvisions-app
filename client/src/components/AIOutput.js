@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 
-const AIOutput = ({ imgUrl, prompt }) => {
+const AIOutput = ({ imgUrl, prompt, model }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -15,6 +15,7 @@ const AIOutput = ({ imgUrl, prompt }) => {
         {
           imgUrl,
           prompt,
+          model,
         }
       );
 

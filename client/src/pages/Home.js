@@ -9,7 +9,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const getStarted = () => {
-    navigate("/workspace");
+    navigate("/options");
   };
   return (
     <>

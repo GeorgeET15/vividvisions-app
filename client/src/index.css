@@ -548,3 +548,49 @@ hr {
 .output-button2:hover {
   background-color: #5673e2; /* Adjust the hover background color as needed */
 }
+
+/* AI Options */
+.aioption-container {
+  padding: 20px;
+}
+
+.aioption-image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.aioption-image-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 20px;
+  padding: 20px;
+  max-width: 300px;
+}
+
+.aioption-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.aioption-card-content {
+  margin-top: 20px;
+}
+
+.aioption-card-content p {
+  margin-bottom: 15px;
+}
+
+.aioption-getstarted-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.aioption-getstarted-button:hover {
+  background-color: #0056b3;
+}

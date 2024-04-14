@@ -26,9 +26,7 @@ const replicate = new Replicate({
   userAgent: "https://www.npmjs.com/package/create-replicate",
 });
 
-async function generateAIContent(imgUrl, prompt) {
-  const model =
-    "catio-apps/interioraidesigns-generate:9e0b15ac47a5a6502175cfab3853d88413f4fd4bee8da0509deb0895db96d0a7";
+async function generateAIContent(imgUrl, prompt, model) {
   const input = {
     seed: 0,
     image: imgUrl,
@@ -46,8 +44,8 @@ async function generateAIContent(imgUrl, prompt) {
 
 app.post("/generateAIContent", async (req, res) => {
   try {
-    const { imgUrl, prompt } = req.body;
-    const generatedImageUrl = await generateAIContent(imgUrl, prompt);
+    const { imgUrl, prompt, model } = req.body;
+    const generatedImageUrl = await generateAIContent(imgUrl, prompt, model);
     res.send({ imageUrl: generatedImageUrl });
   } catch (error) {
     console.error("Error generating AI content:", error);
