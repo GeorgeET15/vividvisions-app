@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const AIOutput = ({ imgUrl, prompt }) => {
-  const [generatedImageUrl, setGeneratedImageUrl] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleGenerateAI = async () => {
-    console.log(imgUrl);
-    console.log(prompt);
+    setLoading(true);
+    navigate("/output");
     try {
       const response = await axios.post(
         "http://localhost:8000/generateAIContent",
@@ -17,19 +19,25 @@ const AIOutput = ({ imgUrl, prompt }) => {
       );
 
       const { imageUrl } = response.data;
-      setGeneratedImageUrl(imageUrl);
+      navigate("/output", { state: imageUrl }); // Pass imageUrl using state
       console.log("AI content generated successfully!");
     } catch (error) {
       console.error("Error generating AI content:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div>
-      <button onClick={handleGenerateAI}>Generate AI Content</button>
-      {generatedImageUrl && (
-        <img src={generatedImageUrl} alt="Generated Image" />
-      )}
+    <div className="ai-output">
+      <button
+        onClick={handleGenerateAI}
+        disabled={loading}
+        className="getstarted-button"
+        style={{ marginTop: "15px" }}
+      >
+        Generate AI Content ✨
+      </button>
     </div>
   );
 };

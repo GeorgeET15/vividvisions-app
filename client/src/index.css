@@ -412,6 +412,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 /* Modal Container */
@@ -503,14 +504,47 @@ hr {
 
 /* AI Output */
 
-.output-header {
-  color: #efefef;
-  font-size: 30px;
+.output {
+  color: white;
+  height: 100vh;
+}
 
+.output-header {
+  font-size: 40px;
+  margin: 15px;
   font-weight: bold;
 }
 
 .output-image {
-  height: 50%;
-  width: 50%;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 400px; /* Adjust the maximum height as needed */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.output-button1,
+.output-button2 {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.output-button1 {
+  background-color: #3454d1;
+}
+
+.output-button2 {
+  background-color: #34d1bf;
+}
+
+.output-button1:hover,
+.output-button2:hover {
+  background-color: #5673e2; /* Adjust the hover background color as needed */
 }
