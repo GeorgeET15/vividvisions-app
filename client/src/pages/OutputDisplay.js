@@ -13,8 +13,44 @@ const OutputDisplay = () => {
     navigate("/workspace");
   };
 
-  const changeObjects = () => {
-    console.log("Changing object functionality will be implemented.");
+  const changeObjects = async () => {
+    navigate("/change");
+    navigate("/change", { state: imgUrl });
+
+    // Create an image element
+    const img = new Image();
+    img.crossOrigin = "anonymous"; // Allow downloading images from other origins
+    img.src = imgUrl;
+
+    // Wait for the image to load
+    await new Promise((resolve, reject) => {
+      img.onload = resolve;
+      img.onerror = reject;
+    });
+
+    // Create a canvas element to draw the image
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0);
+
+    // Convert the canvas content to a data URL
+    const dataUrl = canvas.toDataURL("image/png");
+
+    // Create a temporary anchor element to trigger the download
+    const downloadLink = document.createElement("a");
+    downloadLink.href = dataUrl;
+    downloadLink.download = "generated_image.png";
+
+    // Append the download link to the body
+    document.body.appendChild(downloadLink);
+
+    // Trigger a click event on the anchor element to prompt download
+    downloadLink.click();
+
+    // Remove the download link from the body
+    document.body.removeChild(downloadLink);
   };
 
   return (

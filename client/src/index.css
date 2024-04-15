@@ -594,3 +594,56 @@ hr {
 .aioption-getstarted-button:hover {
   background-color: #0056b3;
 }
+
+/* Change Objects */
+
+/* YOLOObjectDetection.css */
+
+.output {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.change-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.change-image-container {
+  width: 50%;
+  margin-bottom: 20px;
+  border-radius: 10px; /* Add border radius */
+  overflow: hidden; /* Ensure border radius works properly */
+}
+
+.change-preview-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.change-button-container {
+  margin-bottom: 20px;
+}
+
+.upload-button,
+.alternate-products-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+#detected_objects {
+  margin-bottom: 20px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
